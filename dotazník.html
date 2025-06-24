@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poptejte návrh kuchyně</title>
+    <!-- Načtení Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Nastavení vlastního fontu pro celý dokument */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Světle šedé pozadí */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center">Poptejte návrh kuchyně nebo koupelny</h1>
+        <p class="text-gray-600 mb-6 text-center">
+            Zanechte nám své kontaktní údaje a my se vám ozveme, abychom probrali váš grafický návrh kuchyně nebo koupelny!
+        </p>
+
+        <!-- Formulář pro odeslání dat -->
+        <!-- DŮLEŽITÉ: Změňte "YOUR_FORMSPREE_ENDPOINT_HERE" na vaši URL z Formspree.io -->
+        <form action="https://formspree.io/f/xnnvgydq" method="POST" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mailová adresa:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    placeholder="vas.email@example.com"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                />
+            </div>
+
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefonní číslo:</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    placeholder="+420 123 456 789"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                />
+                <p class="text-xs text-gray-500 mt-1">
+                    Telefonní číslo je třeba zadat ručně, nebo jej může prohlížeč nabídnout k automatickému doplnění.
+                </p>
+            </div>
+
+            <button
+                type="submit"
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition duration-150 ease-in-out"
+            >
+                Odeslat poptávku
+            </button>
+        </form>
+
+        <div id="messageBox" class="hidden mt-4 p-3 rounded-md text-sm text-center"></div>
+    </div>
+
+    <script>
+        // JavaScript pro zobrazení zprávy po odeslání (nenahrazuje Formspree notifikaci)
+        const form = document.querySelector('form');
+        const messageBox = document.getElementById('messageBox');
+
+        form.addEventListener('submit', function(event) {
+            // Skryjeme předchozí zprávu
+            messageBox.classList.add('hidden');
+            messageBox.textContent = '';
+            messageBox.classList.remove('bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+            // Pokud používáš Formspree, tato část JS není nutná pro odeslání,
+            // Formspree samo přesměruje nebo zobrazí svou zprávu.
+            // Tato část je spíše pro vizuální zpětnou vazbu před Formspree.
+
+            // Simulace odeslání, pokud bys to chtěl testovat bez Formspree a věděl, že se odešle
+            // V reálném nasazení se spolehni na Formspree pro zpracování
+            /*
+            event.preventDefault(); // Zabraňte standardnímu odeslání formuláře pro tuto simulaci
+
+            messageBox.classList.remove('hidden');
+            messageBox.classList.add('bg-green-100', 'text-green-800');
+            messageBox.textContent = 'Vaše poptávka byla úspěšně odeslána!';
+
+            // Vyčištění formuláře po simulovaném úspěšném odeslání
+            form.reset();
+            */
+        });
+    </script>
+</body>
+</html>
